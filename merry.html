@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+
+        }
+        #container{
+            width: 940px;
+            height: 150px;
+            margin:100px auto;
+            transform-style: preserve-3d;
+            perspective:800px;
+            border: 1px red solid;
+        }
+
+        img{
+            width:240px;
+            height:150px;
+            position:absolute;
+            left:50%;
+            margin-left:-120px;
+            transition:transform 1s ease;
+        }
+    </style>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            for(var i = 0; i < 6; i++){
+                $('<img>').css('transform','rotateY(' + 60*i + 'deg) translateZ(240px)').appendTo($('#container'))
+                        .attr('src','image' + (i + 1) + '.jpg').attr('alt','image' + (i + 1));
+            }
+            var count = 0;
+            var timer = setInterval(function(){
+                $('#container').css('transform','rotateY(' + (6 * count) + 'deg)');
+                count++;
+            },200);
+
+            $('#control').on('click',function(){
+                clearInterval(timer);
+                console.log(timer);
+            })
+        })
+    </script>
+</head>
+<body>
+    <div id="container"></div>
+    <button id="control">Pause</button>
+</body>
+</html>

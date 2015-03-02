@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            margin: 0 0;
+        }
+        #container{
+            margin: 10em auto;
+            border: 2px solid red;
+            width: 120px;
+            height: 100px;
+            position: relative;
+            perspective: 1000px;
+            perspective-origin: 50% 80px;
+            transform-style: preserve-3d;
+        }
+        img{
+            height: 120px;
+            width: 100px;
+            position: absolute;
+            transition: transform 1s ease;
+            /*backface-visibility: hidden;*/
+
+        }
+    </style>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            for(var i = 0; i < 6; i++){
+                $('<img>').css('transform','rotateY(' + 60*i + 'deg) translateZ(200px)').appendTo($('#container'))
+                        .attr('src','image' + (i + 1) + '.jpg').attr('alt','image' + (i + 1));
+            }
+
+            var count = 0;
+            $('#container').on('click',function(){
+                $('#container').css('transform','rotateY(' + (6 * count) + 'deg)');
+                count++;
+            });
+
+            /*var count = 0;
+            setInterval(function(){
+                $('#container').css('transform','rotateY(' + (6 * count) + 'deg)');
+                count++;
+            },200);*/
+        });
+    </script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+</html>

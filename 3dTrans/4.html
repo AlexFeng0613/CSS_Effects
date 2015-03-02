@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Perspective</title>
+    <link rel="stylesheet" href="../base.css"/>
+    <link rel="stylesheet" href="3dtrans.css"/>
+    <style>
+        .d33 {
+            display: inline-block;
+            width: 12em;
+            height: 12em;
+            background-image: url('../image3.jpg');
+            background-size: cover;
+            margin: 1em;
+        }
+        div.container {
+            text-align: center;
+            perspective: 300px; /* The perspective is always applied on the parent container */
+        }
+        span.d33 {
+            transition: all 500ms ease;
+        }
+        span.d33_x:hover{
+            transition: all 500ms ease;
+            transform: rotateX(-180deg);
+        }
+        span.d33_y:hover{
+            transition: all 500ms ease;
+            transform: rotateY(-180deg);
+        }
+        span.d33_z:hover{
+            transition: all 500ms ease;
+            transform: rotateZ(-180deg);
+        }
+    </style>
+
+</head>
+<body>
+<h3>3D Transformations - perspective</h3>
+<div class="container">
+    <span class="d33 d33_x"></span>
+</div>
+<div class="container">
+    <span class="d33 d33_y"></span>
+</div>
+<div class="container">
+    <span class="d33 d33_z"></span>
+</div>
+</body>
+</html>

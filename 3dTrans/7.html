@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Cube</title>
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <style>
+        body {
+            background-color: #393939;
+            padding-top: 6em;
+        }
+
+        @keyframes spin {
+            from { transform: rotateY(0); }
+            to { transform: rotateY(360deg); }
+        }
+
+        .cube {
+            font-size: 2em;
+            width: 200px;
+            height: 200px;
+            margin: .5em auto;
+            transform-style: preserve-3d;
+            perspective: 300px;
+            perspective-origin: 50% 100px;
+            animation: spin 5s infinite linear;
+        }
+
+        .face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(154, 154, 154, 0.80);
+            border-radius: 3px;
+            border: 1px solid white;
+        }
+
+        .front  { transform:                  translateZ(100px); }
+        .top    { transform: rotateX( 90deg)  translateZ(100px); }
+        .right  { transform: rotateY( 90deg)  translateZ(100px); }
+        .left   { transform: rotateY(-90deg)  translateZ(100px); }
+        .bottom { transform: rotateX(-90deg)  translateZ(100px); }
+        .back   { transform: rotateY(-180deg) translateZ(100px); }
+
+    </style>
+    <script>
+        $(function () {
+            ['front', 'top', 'right', 'left', 'bottom', 'back'].forEach(function (className) {
+                $('<div>').addClass('face').addClass(className).appendTo('.cube');
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="cube">
+</div>
+</body>
+</html>

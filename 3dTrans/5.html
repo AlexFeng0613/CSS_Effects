@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Perspective</title>
+    <link rel="stylesheet" href="../base.css"/>
+    <!--<link rel="stylesheet" href="3dtrans.css"/>-->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <style>
+        .d33 {
+            display: inline-block;
+            width: 12em;
+            height: 12em;
+            background-image: url('../image3.jpg');
+            background-size: cover;
+            transform-origin: top left;
+            transition: all 500ms ease;
+            background-color: #eee;
+        }
+        .d33_x{
+            transition: all 500ms ease;
+            transform: rotateX(-180deg);
+        }
+        .d33_y{
+            transition: all 500ms ease;
+            transform: rotateY(-180deg);
+        }
+        .d33_z{
+            transition: all 500ms ease;
+            transform: rotateZ(-180deg);
+        }
+    </style>
+    <script>
+        $(function (){
+            var $d33  = $('.d33');
+            ['d33_z', 'd33_x', 'd33_y', 'reset'].forEach(function (span_class, index, arr) {
+                $('<button>').appendTo(document.body).html(span_class).click(function (event){
+                    console.log(arr);
+                    for (var i = 0, len = arr.length; i < len; i++) {
+                        $d33.removeClass(arr[i]);
+                    }
+                    $d33.addClass(span_class);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<h3>3D Transformations - perspective</h3>
+
+
+<div class="d33"></div>
+
+</body>
+</html>

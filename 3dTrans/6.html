@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../base.css"/>
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <style>
+        /* todo: http://www.w3.org/TR/css3-transforms/#accumulated-3d-transformation-matrix-computation */
+        body {
+            perspective: 200px;
+            transform-style: preserve-3d;
+        }
+        .d33 {
+            /*background: url('../david.png');*/
+            background-color: green;
+            background-size: cover;
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            transition: all 2s ease;
+            transform-origin: top left; /* Always apply this on the base class */
+            transform-style: preserve-3d;
+        }
+        .d33_x {
+            transition: all 2s ease;
+            transform: rotateX(180deg);
+        }
+        .d33_y {
+            transition: all 2s ease;
+            transform: rotateY(40deg);
+        }
+        .d33_z {
+            transition: all 2s ease;
+            transform: rotateZ(180deg);
+        }
+        .childRotate {
+            transition: transform 2s ease;
+            transform: rotateX(40deg);
+            transform-origin: 50% 0%;
+        }
+        .door {
+            height: 100%;
+            width: 100%;
+            background-color: rgba(255,0,0,0.5);
+        }
+        button {
+            display: block;
+            margin: auto;
+        }
+    </style>
+    <script>
+        $(function (){
+            var $d33  = $('.d33');
+            ['d33_z', 'd33_x', 'd33_y', 'reset'].forEach(function (span_class, index, arr) {
+                $('<button>').appendTo(document.body).html(span_class).click(function (event){
+                    console.log(arr);
+                    for (var i = 0, len = arr.length; i < len; i++) {
+                        $d33.removeClass(arr[i]);
+                    }
+                    $d33.addClass(span_class);
+                });
+            });
+            $('.door').click(function () {
+                var $this = $(this);
+                $this.toggleClass('childRotate');
+            });
+        });
+    </script>
+</head>
+<body>
+<h3>For backface visibility show homework ... </h3>
+<div class="d33">
+    <div class="door"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div.icon{
+            /*background: url('sociocons.png') 100% 0 repeat;*/
+            height:250px;
+            width:250px;
+            border: 1px solid red;
+        }
+
+        .facebook{
+            background: url('sociocons.png') 0% 0 repeat;
+        }
+
+        .twitter{
+            background: url('sociocons.png') 32.5% 0 repeat;
+        }
+
+        .googleplus{
+            background: url('sociocons.png') 68% 0 repeat;
+        }
+
+        .youtube{
+            background: url('sociocons.png') 100% 0 repeat;
+        }
+    </style>
+    <script>
+        var icons = ['facebook','twitter','googleplus','youtube'];
+        var cols = [];
+        var rows = [];
+
+        document.addEventListener('DOMContentLoaded',function(){
+            var select = document.querySelector('select');
+            var div = document.querySelector('div.icon');
+            icons.forEach(function(icon,index){
+                var option = document.createElement('option');
+                option.value = index;
+                option.innerHTML = icon;
+                select.appendChild(option);
+            });
+
+            select.addEventListener('change',function(){
+                console.log(select.options[select.value].innerHTML);
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <select name="socoal" id="social">
+
+    </select>
+    <div class="icon">
+
+    </div>
+</body>
+</html>
